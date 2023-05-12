@@ -41,9 +41,15 @@
   
   <form on:submit|preventDefault={donate}>
     <div class="field">
-      <label class="label" for="amount">Enter Amount</label>
+      <label class="label" for="amount">Enter Latitude</label>
       <input bind:value={amount} class="input" id="amount" name="amount" type="number" />
     </div>
+    <div class="field">
+      <label class="label" for="amount">Enter Longitude</label>
+      <input bind:value={amount} class="input" id="amount" name="amount" type="number" />
+    </div>
+
+    <!-- 
     <div class="field">
       <div class="control">
         {#each paymentMethods as method}
@@ -60,6 +66,7 @@
         </select>
       </div>
     </div>
+    -->
     <div class="field">
       <div class="control">
         <button class="button is-link is-light">Donate</button>
@@ -69,3 +76,9 @@
       {message}
     </div>
   </form>
+
+  <!--
+refactor this candidate to users
+enter amount to enter location
+add 2 forms for lat and long
+  -->

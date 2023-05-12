@@ -36,4 +36,9 @@
 	</tbody>
 </table>
 
-// refactor this to apply to placemarkBeta
+<!--refactor this to apply to placemarkBeta
+amount to location add lat/long
+Method to Category
+Cadidate to ????
+Donor to User
+--> 

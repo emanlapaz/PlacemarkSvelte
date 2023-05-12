@@ -1,8 +1,9 @@
 Placemaark Svelte migration
 to do list
 1. refactor 
-Donation->
-
+Donation->Location
+donate->placemark
+candidate-> user
 ?placemark
 ?point
 ?location

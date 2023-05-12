@@ -37,7 +37,7 @@ export const donationService = {
 	async signup(firstName, lastName, email, password) {
 		try {
 			const userDetails = {
-				firstName: firstName,
+				firstName: firstName, // how to display firstname
 				lastName: lastName,
 				email: email,
 				password: password
