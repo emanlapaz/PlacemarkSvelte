@@ -11,11 +11,11 @@
 <div class="columns">
 	<div class="column">
 		<div class="box">
-			<h1 class="title">Login</h1>
+			<h1 class="title">Sign Up!</h1>
 			<SignupForm />
 		</div>
 	</div>
 	<div class="column has-text-centered">
-		<img alt="homer" src="/homer3.png" width="300" />
+		<img alt="signup" src="/sign up.jpeg" width="400" />
 	</div>
 </div>
