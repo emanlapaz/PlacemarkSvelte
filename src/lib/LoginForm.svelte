@@ -1,6 +1,6 @@
 <script>
     import { goto } from "$app/navigation";
-    import { donationService } from "../services/donation-service";
+    import { placemarkService } from "../services/placemark-service";
 
     let email = "";
     let password = "";
@@ -8,9 +8,9 @@
 
     async function login() {
         console.log(`attemting to log in email: ${email} with password: ${password}`);
-        let success = await donationService.login(email, password);
+        let success = await placemarkService.login(email, password);
         if (success) {
-            goto("/donate");
+            goto("/addPlacemark");
         } else {
             email = "";
             password = "";

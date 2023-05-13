@@ -1,7 +1,7 @@
 <script>
     import { goto } from "$app/navigation";
-    import { donationService } from "../../services/donation-service";
+    import { placemarkService } from "../../services/placemark-service";
 
-    donationService.logout();
+    placemarkService.logout();
     goto("/");
 </script>

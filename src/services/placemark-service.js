@@ -3,7 +3,7 @@
 import axios from "axios";
 import { user } from "../stores";
 
-export const donationService = {
+export const placemarkService = {
 	baseUrl: "http://ujin:4000", // own api
 
 	async login(email, password) {
@@ -15,7 +15,7 @@ export const donationService = {
 					email: email,
 					token: response.data.token
 				});
-				localStorage.donation = JSON.stringify({ email: email, token: response.data.token });
+				localStorage.placemark = JSON.stringify({ email: email, token: response.data.token });
 				return true;
 			}
 			return false;
@@ -31,13 +31,13 @@ export const donationService = {
 			token: ""
 		});
 		axios.defaults.headers.common["Authorization"] = "";
-		localStorage.removeItem("donation");
+		localStorage.removeItem("placemark");
 	},
 
 	async signup(firstName, lastName, email, password) {
 		try {
 			const userDetails = {
-				firstName: firstName, // how to display firstname
+				firstName: firstName,
 				lastName: lastName,
 				email: email,
 				password: password
@@ -50,16 +50,24 @@ export const donationService = {
 	},
 
 	reload() {
-		const donationCredentials = localStorage.donation;
-		if (donationCredentials) {
-			const savedUser = JSON.parse(donationCredentials);
+		const placemarkCredentials = localStorage.placemark;// from donation Credentials
+		if (placemarkCredentials) {
+			const savedUser = JSON.parse(placemarkCredentials);
 			user.set({
+				firstName: savedUser.firstName,
 				email: savedUser.email,
 				token: savedUser.token
 			});
 			axios.defaults.headers.common["Authorization"] = "Bearer " + savedUser.token;
 		}
 	},
+}
+
+
+	// refactor own api to include this
+	// placemark Name
+	//lat and long category description
+	/*
 	async donate(donation) {
 		try {
 			const response = await axios.post(this.baseUrl + "/api/candidates/" + donation.candidate + "/donations", donation);
@@ -87,3 +95,4 @@ export const donationService = {
 		}
 	}
 };
+*/

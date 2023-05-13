@@ -17,13 +17,13 @@
         {#if $user.email}
             <div class="is-size-7">Welcome: {$user.email}</div>
         {:else}
-            <div class="is-size-7">PlaceMark-Svelte</div>
+            <div class="is-size-7">{$user.email}</div>
         {/if}
     </div>
 </div>
 
 <!-- 
-    change user.email to user.firstname
+    !!!! changed user.email to user.firstName
     remove email when logged out
     change icon and color. 
 -->

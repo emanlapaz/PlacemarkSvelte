@@ -1,9 +1,9 @@
 <script>
 	import { beforeUpdate } from "svelte";
-	import { donationService } from "../services/donation-service";
+	import { placemarkService } from "../services/placemark-service.js";
 
 	beforeUpdate(() => {
-		donationService.reload();
+		placemarkService.reload();
 	});
 </script>
 
