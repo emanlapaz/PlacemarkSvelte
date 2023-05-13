@@ -8,7 +8,7 @@
       <p>Sign Up</p>
     </a>
     <a href="/login" class="column">
-      <i class="fas fa-user-tag fa-3x" style="color:blue" title="Log in"></i>
+      <i class="fas fa-sign-in-alt fa-3x" style="color:blue" title="Log in"></i>
       <p>Log in</p>
     </a>
     
