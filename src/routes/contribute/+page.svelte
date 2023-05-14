@@ -1,6 +1,6 @@
 <script>
 	import Header from '$lib/Header.svelte';
-	import AddPlacemarkForm from '$lib/AddPlacemarkForm.svelte';
+	import ContributeForm from '$lib/ContributeForm.svelte';
 	import MainNavigator from '$lib/MainNavigator.svelte';
 </script>
 
@@ -14,6 +14,6 @@
 	</div>
 	<div class="column box has-text-centered">
 		<h1 class="title is-4">Add a PlaceMark</h1>
-		<AddPlacemarkForm/>
+		<ContributeForm/>
 	</div>
 </div>

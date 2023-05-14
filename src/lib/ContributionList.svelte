@@ -1,40 +1,44 @@
 <script>
 	// @ts-nocheck
 	import { onMount } from "svelte";
-	import { placemarkService } from "../services/placemark-service";
+	import { contributionService } from "../services/contribution-service";
 
-	let placemarkList = [];
+	let contributionList = [];
 	onMount(async () => {
-		placemarkList = await placemarkService.getPlacemarks();
+		contributionList = await contributionService.getContributions();
 	});
 </script>
 
 <table class="table is-fullwidth">
 	<thead>
-		<th>Name</th> 
+		<th>Name</th>
+		<th>Description</th>
 		<th>Latitude</th> 
 		<th>Longitude</th>
 		<th>Category</th>
 		<th>Contributor</th> <!-- user to donor??-->
-		<th>Description</th>
+		
 	</thead>
 	<tbody>
-		{#each placemarkList as placemark}
+		{#each contributionList as contribution}
 			<tr>
 				<td>
-					{placemark.placemarkName}
+					{contribution.placemarkName}
 				</td>
 				<td>
-					{placemark.latitude}
+					{contribution.description}
 				</td>
 				<td>
-					{placemark.longitude}
+					{contribution.lat}
 				</td>
 				<td>
-					{placemark.category}
+					{contribution.lng}
 				</td>
 				<td>
-					{placemark.user.firstName} {placemark.user.lastName}<!-- donor to user-->
+					{contribution.category.type}, {contribution.category.location}
+				</td>
+				<td>
+					{contribution.contributor.firstName} {contribution.contributor.lastName}
 				</td>
 			</tr>
 		{/each}

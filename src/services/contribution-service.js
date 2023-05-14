@@ -3,8 +3,8 @@
 import axios from "axios";
 import { user } from "../stores";
 
-export const placemarkService = {
-	baseUrl: "http://ujin:4000", // own api
+export const contributionService = {
+	baseUrl: "http://localhost:4000", // hapi donation 4
 
 	async login(email, password) {
 		try {
@@ -15,7 +15,7 @@ export const placemarkService = {
 					email: email,
 					token: response.data.token
 				});
-				localStorage.placemark = JSON.stringify({ email: email, token: response.data.token });
+				localStorage.contribution = JSON.stringify({ email: email, token: response.data.token });
 				return true;
 			}
 			return false;
@@ -31,7 +31,7 @@ export const placemarkService = {
 			token: ""
 		});
 		axios.defaults.headers.common["Authorization"] = "";
-		localStorage.removeItem("placemark");
+		localStorage.removeItem("contribution");
 	},
 
 	async signup(firstName, lastName, email, password) {
@@ -50,49 +50,41 @@ export const placemarkService = {
 	},
 
 	reload() {
-		const placemarkCredentials = localStorage.placemark;// from donation Credentials
-		if (placemarkCredentials) {
-			const savedUser = JSON.parse(placemarkCredentials);
+		const contributionCredentials = localStorage.contribution;
+		if (contributionCredentials) {
+			const savedUser = JSON.parse(contributionCredentials);
 			user.set({
-				firstName: savedUser.firstName,
 				email: savedUser.email,
 				token: savedUser.token
 			});
 			axios.defaults.headers.common["Authorization"] = "Bearer " + savedUser.token;
 		}
 	},
-}
 
-
-	// refactor own api to include this
-	// placemark Name
-	//lat and long category description
-	/*
-	async donate(donation) {
+	async contribute(contribution) {
 		try {
-			const response = await axios.post(this.baseUrl + "/api/candidates/" + donation.candidate + "/donations", donation);
+			const response = await axios.post(this.baseUrl + "/api/categories/" + contribution.category + "/contributions", contribution);
 			return response.status == 200;
 		} catch (error) {
 			return false;
 		}
 	},
 
-	async getCandidates() {
+	async getCategories() {
 		try {
-			const response = await axios.get(this.baseUrl + "/api/candidates");
+			const response = await axios.get(this.baseUrl + "/api/categories");
 			return response.data;
 		} catch (error) {
 			return [];
 		}
 	},
 
-	async getDonations() {
+	async getContributions() {
 		try {
-			const response = await axios.get(this.baseUrl + "/api/donations");
+			const response = await axios.get(this.baseUrl + "/api/contributions");
 			return response.data;
 		} catch (error) {
 			return [];
 		}
 	}
 };
-*/

@@ -1,5 +1,5 @@
 <div class="box has-text-centered columns m-2">
-    <a href="/addPlacemark" class="column is-4">
+    <a href="/contribute" class="column is-4">
         <i class="fas fa-map-marker fa-3x" style="color:red" />
     <p>Placemark</p></a>
     <a href="/report" class="column is-4">
