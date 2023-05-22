@@ -16,8 +16,7 @@
 		<th>Latitude</th> 
 		<th>Longitude</th>
 		<th>Category</th>
-		<th>Contributor</th> <!-- user to donor??-->
-		
+		<th>Location</th>
 	</thead>
 	<tbody>
 		{#each contributionList as contribution}
@@ -35,19 +34,15 @@
 					{contribution.lng}
 				</td>
 				<td>
-					{contribution.category.type}, {contribution.category.location}
+					{contribution.category}
 				</td>
 				<td>
 					{contribution.contributor.firstName} {contribution.contributor.lastName}
+				</td>
+				<td>
+					{contribution.location.town} {contribution.location.county}
 				</td>
 			</tr>
 		{/each}
 	</tbody>
 </table>
-
-<!--refactor this to apply to placemarkBeta
-amount to location add lat/long
-Method to Category
-Cadidate to ????
-Donor to User
---> 

@@ -4,7 +4,7 @@ import axios from "axios";
 import { user } from "../stores";
 
 export const contributionService = {
-	baseUrl: "http://localhost:4000", // hapi donation 4
+	baseUrl: "http://Ujin:4000", // placemark hapi v2
 
 	async login(email, password) {
 		try {
@@ -60,25 +60,23 @@ export const contributionService = {
 			axios.defaults.headers.common["Authorization"] = "Bearer " + savedUser.token;
 		}
 	},
-
 	async contribute(contribution) {
 		try {
-			const response = await axios.post(this.baseUrl + "/api/categories/" + contribution.category + "/contributions", contribution);
+			const response = await axios.post(this.baseUrl + "/api/locations/" + contribution.location + "/contributions", contribution);
 			return response.status == 200;
 		} catch (error) {
 			return false;
 		}
 	},
 
-	async getCategories() {
+	async getLocations() {
 		try {
-			const response = await axios.get(this.baseUrl + "/api/categories");
+			const response = await axios.get(this.baseUrl + "/api/locations");
 			return response.data;
 		} catch (error) {
 			return [];
 		}
-	},
-
+	}, 
 	async getContributions() {
 		try {
 			const response = await axios.get(this.baseUrl + "/api/contributions");

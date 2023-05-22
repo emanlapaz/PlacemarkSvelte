@@ -7,26 +7,29 @@
     let placemarkName;
     let lat;
     let lng;
-    let categoryList = [];
-    let selectedCategory= "";
+    let locationList = [];
+    let selectedLocation= "";
+    let placemarkCategories = ["Nature", "Food", "Sports", "History", "Accomodation","Health", "Education",];
+    let selectedCategory = "";
     let description;
     let message = "PlaceMark Svelte";
     
     onMount(async () => {
-		categoryList = await contributionService.getCategories();
+		        locationList = await contributionService.getLocations();
 	  });
 
     async function contribute() {
-      if (placemarkName && lat && long&& selectedCategory) {
-        const categoryNames = selectedCategory.split(",");
-        const category = categoryList.find((category) => category.location == categoryNames[0] && category.type == categoryNames[1]);
+      if (placemarkName && lat && long&& selectedLocation) {
+        const locationNames = selectedLocation.split(",");
+        const location = LocationList.find((location) => location.town === locationNames[0] && location.county == locationNames[1]);
         const contribution = {
-          placemarkName: placemarkName,
-          description: description,
-          lat: lat, // latitutude
-          lng: lng, // longitude
-          category: category._id
-        };
+                placemarkName: placemarkName,
+                lat: lat,
+                lng: lng,
+                description: description,
+                category: selectedCategory,
+                location: location._id
+			};
         const success = await contributionService.contribute(contribution);
         if (!success) {
           message = "Adding placemark not completed - some error occurred";
@@ -37,6 +40,8 @@
         message = "Please fill up all the forms";
       }
     }
+
+    // WORK FROM HERE
   </script>
   
   <form on:submit|preventDefault={contribute}>
@@ -57,19 +62,19 @@
       <input bind:value={lng} class="input" id="lng" name="lng" type="string" />
     </div>
     <div class="field">
-      <div class="select">
-        <select bind:value={selectedCategory}>
-          {#each categoryList as category}
-            <option>{category.type}</option>
-          {/each}
-        </select>
-        <select bind:value={selectedCategory}>
-          {#each categoryList as category}
-            <option>{category.location}</option>
-          {/each}
-        </select>
-      </div>
-    </div>
+		<div class="control">
+			{#each placemarkCategories as category}
+				<input bind:group={selectedCategory} class="radio" type="radio" value={category} /> {category}
+			{/each}
+		</div>
+    <div class="field">
+		<div class="select">
+			<select bind:value={selectedLocation}>
+				{#each locationList as location}
+					<option>{location.town},{location.county}</option>
+				{/each}
+			</select>
+		</div>
     <div class="field">
       <div class="control">
         <button class="button is-link is-light">Add PlaceMark</button>
