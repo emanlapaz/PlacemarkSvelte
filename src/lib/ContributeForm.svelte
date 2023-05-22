@@ -20,7 +20,7 @@
 	  });
 
     async function contribute() {
-      if (selectedLocation && pplacemarkName && selectedCategory) {
+      if (selectedLocation && placemarkName && selectedCategory) {
                 const locationNames = selectedLocation.split(",");
                 const location = locationList.find((location) => location.town === locationNames[0] && location.county == locationNames[1]);
                 const contribution = {
@@ -52,14 +52,6 @@
       <label class="label" for="description">Enter Description</label>
       <input bind:value={description} class="input" id="description" name="description" type="string" />
     </div>
-    <!--<div class="field">
-      <label class="label" for="latitude">Enter Latitude</label>
-      <input bind:value={lat} class="input" id="lat" name="lat" type="string" />
-    </div>
-    <div class="field">
-      <label class="label" for="longitude">Enter Longitude</label>
-      <input bind:value={lng} class="input" id="lng" name="lng" type="string" />
-    </div>-->
     <Coordinates bind:lat={lat} bind:lng={lng}/>
     <div class="field">
 		<div class="control">

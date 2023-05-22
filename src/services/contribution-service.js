@@ -60,15 +60,17 @@ export const contributionService = {
 			axios.defaults.headers.common["Authorization"] = "Bearer " + savedUser.token;
 		}
 	},
-	async contribute(contribution) {
+	
+	async contribute(id, contribution) {
 		try {
-			const response = await axios.post(this.baseUrl + "/api/locations/" + contribution.location + "/contributions", contribution);
+			const response = await axios.post(this.baseUrl + "/api/locations/" + id + "/contributions", contribution);
 			latestContribution.set(contribution);
 			return response.status == 200;
 		} catch (error) {
 			return false;
 		}
 	},
+	
 
 	async getLocations() {
 		try {
@@ -96,3 +98,4 @@ export const contributionService = {
 		}
 	}
 };
+

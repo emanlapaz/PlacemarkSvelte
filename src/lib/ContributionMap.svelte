@@ -32,7 +32,7 @@
 
 	latestContribution.subscribe(async (contribution) => {
 		if (contribution && map) {
-			const candidate = await contributionService.getLocation(contribution.contribution);
+			const location = await contributionService.getLocation(contribution.contribution);
 			contribution.location = location;
 			addContributionMarker(map, contribution);
 		}

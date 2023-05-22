@@ -9,12 +9,13 @@
 	<MainNavigator />
 </Header>
 
-<div class="columns is-vcentered">
-	<div class="column has-text-centered">
-		<ContributionMap/>
-	</div>
-	<div class="column box has-text-centered">
+<div class="container">
+	<div class="box has-text-centered">
 		<h1 class="title is-4">Add a PlaceMark</h1>
 		<ContributeForm/>
 	</div>
+	<div class="box has-text-centered">
+		<ContributionMap/>
+	</div>
+
 </div>
