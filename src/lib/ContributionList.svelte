@@ -16,6 +16,7 @@
 		<th>Latitude</th> 
 		<th>Longitude</th>
 		<th>Category</th>
+		<th>Contributor</th>
 		<th>Location</th>
 	</thead>
 	<tbody>

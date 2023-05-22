@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 import axios from "axios";
-import { user } from "../stores";
+import { latestContribution, user } from "../stores";
 
 export const contributionService = {
 	baseUrl: "http://Ujin:4000", // placemark hapi v2
@@ -63,6 +63,7 @@ export const contributionService = {
 	async contribute(contribution) {
 		try {
 			const response = await axios.post(this.baseUrl + "/api/locations/" + contribution.location + "/contributions", contribution);
+			latestContribution.set(contribution);
 			return response.status == 200;
 		} catch (error) {
 			return false;
@@ -76,7 +77,16 @@ export const contributionService = {
 		} catch (error) {
 			return [];
 		}
-	}, 
+	},
+
+	async getLocation(id) {
+		try {
+			const response = await axios.get(this.baseUrl + "/api/locations/" + id);
+			return response.data;
+		} catch (error) {
+			return [];
+		}
+	},
 	async getContributions() {
 		try {
 			const response = await axios.get(this.baseUrl + "/api/contributions");

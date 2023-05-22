@@ -4,3 +4,5 @@ export const user = writable({
   email: "",
   token: "",
 });
+
+export const latestDonation = writable(null);

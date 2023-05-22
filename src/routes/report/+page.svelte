@@ -13,7 +13,7 @@
 		<img alt="map" src="/map.jpeg" width="300" />
 	</div>
 	<div class="column box has-text-centered">
-		<h1 class="title is-4">Placemark List</h1>
+		<h1 class="title is-4">Placemark Contribution List</h1>
 		<ContributionList />
 	</div>
 </div>

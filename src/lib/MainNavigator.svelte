@@ -6,6 +6,9 @@
         <i class="fas fa-user-tag fa-3x" style="color:rgb(63, 122, 139)" />
         <p>Placemark list</p>
     </a>
+    <a href="/map" class="column ">
+        <i class="fas fa-map-marked-alt fa-3x" style="color:rgb(102, 153, 255)" />
+    </a>
     <a href="/" class="column is04">
         <i class= "fas fa-sign-out-alt fa-3x"  style="color:rgb(156, 70, 128)" />
         <p>Log out</p>
