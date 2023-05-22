@@ -11,7 +11,6 @@
 
 <div class="columns is-vcentered">
 	<div class="column has-text-centered">
-		<img alt="globe" src="/globe.jpeg" width="300" />
 		<ContributionMap/>
 	</div>
 	<div class="column box has-text-centered">

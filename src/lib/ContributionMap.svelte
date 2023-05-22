@@ -1,9 +1,8 @@
 <script>
 	// @ts-nocheck
-
+	import { onMount } from "svelte";
 	import "leaflet/dist/leaflet.css";
 	import { LeafletMap } from "../services/leaflet-map";
-	import { onMount } from "svelte";
 	import { contributionService } from "../services/contribution-service";
 	import { latestContribution } from "../stores";
 
@@ -27,7 +26,7 @@
 
 	function addContributionMarker(map, contribution) {
 		const contributionStr = `${contribution.location.town} ${contribution.location.county} €${contribution.placemarkName.toString()}`;
-		map.addMarker({ lat: contribution.lat, lng: contribution.lng }, contributiontr, "Contributions");
+		map.addMarker({ lat: contribution.lat, lng: contribution.lng }, contributionStr, "Contributions");
 		map.moveTo(8, { lat: contribution.lat, lng: contribution.lng });
 	}
 

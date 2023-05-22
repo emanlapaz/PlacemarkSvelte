@@ -6,8 +6,8 @@
     import { contributionService } from "../services/contribution-service";
   
     let placemarkName;
-    let lat = 52.160858;
-    let lng = -7.15242;
+    let lat = 53.33;
+    let lng = -6.24;
     let locationList = [];
     let selectedLocation= "";
     let placemarkCategories = ["Nature", "Food", "Sports", "History", "Accomodation","Health", "Education",];
