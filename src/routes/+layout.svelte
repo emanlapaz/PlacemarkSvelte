@@ -1,10 +1,4 @@
-<script>
-	import { beforeUpdate } from "svelte";
-	import { contributionService } from "../services/contribution-service.js";
-
-	beforeUpdate(() => {
-		contributionService.reload();
-	});
+<script lang="ts">
 </script>
 
 <div class="container">

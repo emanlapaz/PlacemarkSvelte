@@ -1,5 +1,5 @@
-<script>
-    import { user } from "../stores.js";
+<script lang="ts">
+    import { loggedInUser } from "../stores";
     export let title = "";
     export let subTitle = "";
 </script>
@@ -14,16 +14,10 @@
     </div>
     <div class="column">
         <i class="fas fa-user fa-3x" style="color:orange" />
-        {#if $user.email}
-            <div class="is-size-7">Welcome: {$user.email}</div>
-        {:else}
-            <div class="is-size-7">{$user.email}</div>
-        {/if}
+        {#if $loggedInUser?.email}
+        <div class="is-size-7">{$loggedInUser.email}</div>
+    {:else}
+        <div class="is-size-7">Placemark-Svelte 0.2</div>
+    {/if}
     </div>
 </div>
-
-<!-- 
-    !!!! changed user.email to user.firstName
-    remove email when logged out
-    change icon and color. 
--->

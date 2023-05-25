@@ -1,33 +1,37 @@
-<script>
-    import TitleBar from "$lib/TitleBar.svelte";
-    import MainNavigator from "$lib/MainNavigator.svelte";
-    import Chart from "svelte-frappe-charts";
+<script lang="ts">
+	// @ts-ignore
+	import Chart from "svelte-frappe-charts";
+	import Header from "$lib/Header.svelte";
+	import MainNavigator from "$lib/MainNavigator.svelte";
+	import type { ChartData } from "../../services/charts";
+	import { onMount } from "svelte";
+	import { contributionService } from "../../services/contribution-service";
+	import { generateByLocation, generateByCategory } from "../../services/contribution-utils";
 
-    let data = {
-        labels: ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"],
-        datasets: [
-            {
-                values: [10, 12, 3, 9, 8, 15, 9]
-            }
-        ]
-    };
+	let byLocation: ChartData;
+	let byCategory: ChartData;
+
+	onMount(async () => {
+		contributionService.checkPageRefresh();
+
+		const contributions = await contributionService.getContributions();
+		const contributionsByLocation = await contributionService.getContributionsByLocations();
+		byCategory = generateByCategory(contributions);
+		byLocation = generateByLocation(contributionsByLocation);
+	});
 </script>
 
-<div class="columns is-vcentered">
-    <div class="column is-half">
-        <TitleBar subTitle={"Contribution Analytics"} title={"Placemark Community"} />
-    </div>
-    <div class="column">
-        <MainNavigator />
-    </div>
-</div>
+<Header>
+	<MainNavigator />
+</Header>
 
 <div class="columns">
-    <div class="column box has-text-centered">
-        <h1 class="title is-4">Contributionsto date</h1>
-        <Chart {data} type="line" />
-    </div>
-    <div class="column has-text-centered">
-        <img alt="globe" src="/globe.jpeg" width="300" />
-    </div>
+	<div class="column box has-text-centered">
+		<h1 class="title is-4">Contribution By Category</h1>
+		<Chart data={byCategory} type="bar" />
+	</div>
+	<div class="column box has-text-centered">
+		<h1 class="title is-4">Contributions to date</h1>
+		<Chart data={byLocation} type="pie" />
+	</div>
 </div>

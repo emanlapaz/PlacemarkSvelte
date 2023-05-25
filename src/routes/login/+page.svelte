@@ -1,7 +1,9 @@
-<script>
-	import Header from '$lib/Header.svelte';
-	import LoginForm from '$lib/LoginForm.svelte';
-	import WelcomeNavigator from '$lib/WelcomeNavigator.svelte';
+<script lang="ts">
+	import { goto } from "$app/navigation";
+	import Header from "$lib/Header.svelte";
+	import { contributionService } from "../../services/contribution-service";
+	import WelcomeNavigator from "$lib/WelcomeNavigator.svelte";
+	import LoginForm from "./LoginForm.svelte";
 </script>
 
 <Header>

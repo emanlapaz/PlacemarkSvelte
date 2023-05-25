@@ -1,52 +1,61 @@
-<script>
-  // @ts-nocheck
-  
-    import { onMount } from "svelte";
-    import Coordinates from "./Coordinates.svelte";
+<script lang="ts">
     import { contributionService } from "../services/contribution-service";
-  
-    let placemarkName;
-    let lat = 53.33;
-    let lng = -6.24;
-    let locationList = [];
-    let selectedLocation= "";
-    let placemarkCategories = ["Nature", "Food", "Sports", "History", "Accomodation","Health", "Education",];
-    let selectedCategory = "";
-    let description;
-    let message = "PlaceMark Svelte";
-    
-    onMount(async () => {
-		        locationList = await contributionService.getLocations();
-	  });
+	  import type { Location } from "../services/contribution-types";
+	  import { loggedInUser } from "../stores";
+	  import Coordinates from "$lib/Coordinates.svelte";
 
+	  export let locationList: Location[] = [];
+
+
+    export let placemarkName = "";
+    export let lat = 53.33;
+    export let lng = -6.24;
+    export let rating = 1;
+    export let selectedLocation = "";
+    export let placemarkCategories = ["Nature", "Food", "Sports", "History", "Accommodation", "Health", "Education"];
+    export let selectedCategory = "";
+    export let description = "";
+    export let message = "PlaceMark Svelte";
+    
     async function contribute() {
       if (selectedLocation && placemarkName && selectedCategory) {
                 const locationNames = selectedLocation.split(",");
                 const location = locationList.find((location) => location.town === locationNames[0] && location.county == locationNames[1]);
+                if (location) {
                 const contribution = {
                         placemarkName: placemarkName,
+                        rating: rating,
                         lat: lat,
                         lng: lng,
                         description: description,
                         category: selectedCategory,
-                        location: location._id
+                        location: location,
+                        contributor: $loggedInUser,
+                        _id: ""
                 };
                 const success = await contributionService.contribute(contribution);
                 if (!success) {
                   message = "Adding placemark not completed - some error occurred";
                   return;
                 }
-                message = `Thanks! You added ${placemarkName} in ${category.location}`;
+                message = `Thanks! You added ${placemarkName}`;
+              }
         } else {
                 message = "Please fill up all the forms";
       }
     }
-  </script>
+
+
+</script>
   
   <form on:submit|preventDefault={contribute}>
     <div class="field">
       <label class="label" for="placemarkName">Enter Name</label>
       <input bind:value={placemarkName} class="input" id="placemarkName" name="placemarkName" type="string" />
+    </div>
+    <div class="field">
+      <label class="label" for="rating">Enter Rating</label>
+      <input bind:value={rating} class="input" id="rating" name="rating" type="number" />
     </div>
     <div class="field">
       <label class="label" for="description">Enter Description</label>

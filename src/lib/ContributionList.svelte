@@ -1,17 +1,13 @@
-<script>
-	// @ts-nocheck
-	import { onMount } from "svelte";
-	import { contributionService } from "../services/contribution-service";
+<script lang="ts">
+	import type { Contribution } from "../services/contribution-types";
 
-	let contributionList = [];
-	onMount(async () => {
-		contributionList = await contributionService.getContributions();
-	});
+	export let contributions: Contribution[];
 </script>
 
 <table class="table is-fullwidth">
 	<thead>
 		<th>Name</th>
+		<th>Rating</th>
 		<th>Description</th>
 		<th>Latitude</th> 
 		<th>Longitude</th>
@@ -20,10 +16,13 @@
 		<th>Location</th>
 	</thead>
 	<tbody>
-		{#each contributionList as contribution}
+		{#each contributions as contribution}
 			<tr>
 				<td>
 					{contribution.placemarkName}
+				</td>
+				<td>
+					{contribution.rating}
 				</td>
 				<td>
 					{contribution.description}
@@ -38,7 +37,7 @@
 					{contribution.category}
 				</td>
 				<td>
-					{contribution.contributor.firstName} {contribution.contributor.lastName}
+					{contribution.contributor.email}
 				</td>
 				<td>
 					{contribution.location.town} {contribution.location.county}

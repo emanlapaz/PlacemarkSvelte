@@ -1,7 +1,7 @@
-<script>
-    export let lat = 0.0;
-    export let lng = 0.0;
-  </script>
+<script lang="ts">
+	export let lat = 0.0;
+	export let lng = 0.0;
+</script>
   
   <div class="box field is-horizontal">
     <div class="field-label is-normal">

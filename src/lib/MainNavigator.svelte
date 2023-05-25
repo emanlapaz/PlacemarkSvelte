@@ -2,9 +2,9 @@
     <a href="/contribute" class="column is-4">
         <i class="fas fa-map-marker fa-2x" style="color:red" />
     <p>Contribute</p></a>
-    <a href="/report" class="column is-4">
+    <a href="/dashboard" class="column is-4">
         <i class="fas fa-user-tag fa-2x" style="color:rgb(63, 122, 139)" />
-        <p>Placemark list</p>
+        <p>Dashboard</p>
     </a>
     <a href="/map" class="column ">
         <i class="fas fa-map-marked-alt fa-2x" style="color:rgb(102, 153, 255)" />

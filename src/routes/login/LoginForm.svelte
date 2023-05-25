@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
     import { goto } from "$app/navigation";
-    import { contributionService } from "../services/contribution-service";
+    import { contributionService } from "../../services/contribution-service";
 
     let email = "";
     let password = "";
@@ -10,7 +10,7 @@
         console.log(`attemting to log in email: ${email} with password: ${password}`);
         let success = await contributionService.login(email, password);
         if (success) {
-            goto("/contribute");
+            goto("/dashboard");
         } else {
             email = "";
             password = "";

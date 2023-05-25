@@ -1,6 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import { contributionService } from "../services/contribution-service";
+    import { contributionService } from "../../services/contribution-service";
 
     let firstName = "";
     let lastName = "";
